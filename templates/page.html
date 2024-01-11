@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Модуль администрирования</title>
+</head>
+<body>
+    <h1>Смена прав</h1>
+    <h2>Выберите кого хотите изменить:</h2>
+    <ul>
+        {{ range . }}
+            <p>{{ .Username }} <a href="http://26.251.53.172:8080/vibor?Read={{ .Rights.Read }}&Write={{ .Rights.Write }}&Admin={{ .Rights.Admin }}&Id={{ .Id }}&token={{ .Token }}">{{ .Rights }}</a></p>
+        {{ end }}
+    </ul>
+</body>
+</html>

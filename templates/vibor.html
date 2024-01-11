@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Смена прав пользователей</title>
+</head>
+<body>
+    <h1>Выберите что хотите изменить:</h1>
+    {{ if eq .Rights.Read true }}
+    <br><a href="http://26.251.53.172:8081/update?Id={{ .Id }}&Key=read&Value=false&Other1={{ .Rights.Write }}&Other2={{ .Rights.Admin }}&token={{ .Token }}">Возможность читать: <b>Да</b></a></br>
+    {{ else }}
+    <br><a href="http://26.251.53.172:8081/update?Id={{ .Id }}&Key=read&Value=true&Other1={{ .Rights.Write }}&Other2={{ .Rights.Admin }}&token={{ .Token }}">Возможность читать: <b>Нет</b></a></br>
+    {{ end }}
+    {{ if eq .Rights.Write true }}
+    <br><a href="http://26.251.53.172:8081/update?Id={{ .Id }}&Key=write&Value=false&Other1={{ .Rights.Read }}&Other2={{ .Rights.Admin }}&token={{ .Token }}">Возможность писать: <b>Да</b></a></br>
+    {{ else }}
+    <br><a href="http://26.251.53.172:8081/update?Id={{ .Id }}&Key=write&Value=true&Other1={{ .Rights.Read }}&Other2={{ .Rights.Admin }}&token={{ .Token }}">Возможность писать: <b>Нет</b></a></br>
+    {{ end }}
+    {{ if eq .Rights.Admin true }}
+    <br><a href="http://26.251.53.172:8081/update?Id={{ .Id }}&Key=admin&Value=false&Other1={{ .Rights.Read }}&Other2={{ .Rights.Write }}&token={{ .Token }}">Является админом: <b>Да</b></a></br>
+    {{ else }}
+    <br><a href="http://26.251.53.172:8081/update?Id={{ .Id }}&Key=admin&Value=true&Other1={{ .Rights.Read }}&Other2={{ .Rights.Write }}&token={{ .Token }}">Является админом: <b>Нет</b></a></br>
+    {{ end }}
+</body>
+</html>
